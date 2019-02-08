@@ -1,11 +1,9 @@
 #' K nearest neighbors algo
 #'
-#'A demo R function that wraps our C++ code. 
+#'R function that wraps our C++ code. 
 #'
 #' @param X.mat numeric train feature matrix [n x p]
-#' @param y.vec numeric train label vector [n], either 
-#' all 0/1 for binary classification, or other real numbers
-#' for regression (multi-class classification not supposrted).
+#' @param y.vec numeric train label vector [n], either all 0/1 for binary classification, or other real numbers for regression (multi-class classification not supposrted).
 #' @param testX.vec numeric test feature vector [p]
 #' @param max.neighbors scalar integer, max number of neighbors.
 #'
@@ -27,6 +25,6 @@ knn <- function(X.mat, y.vec, testX.vec, max.neighbors){
     "knn_interface", as.double(x.mat), as.double(y.vec), 
     as.double(testX.vec), as.integer(nrow(X.mat)), 
     as.integer(ncol(X.mat)), as.integer(max.neighbors), 
-    predictions-double(max.neighbors), PACKAGE="RstuffDelete")
+    predictions-double(max.neighbors), PACKAGE="NearestNeighbors")
   result.list$predictions
 }
