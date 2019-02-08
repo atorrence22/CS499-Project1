@@ -1,6 +1,7 @@
 #include "knn.h"
 #include <R.h>
 #include <R_ext/Rdynload.h>
+#include "myMean.h"
 
 void knn_interface(
     const double *train_inputs_ptr, //n oservations x n_features
@@ -27,8 +28,11 @@ R_CMethodDef CMethods[] = {
 };
 
 extern "C" {
-  void R_init_nearestNeighbors(DllInfo *info){
-    R_registerRoutines(info, CMethods, NULL, NULL, NULL); 
+  void R_init_NearestNeighbors(DllInfo *info){
+    R_registerRoutines(info, CMethods, NULL, NULL, NULL);
+    //R_useDynamicSymbols call says the DLL is not to be searched for
+    //entry points specified by character strings so .C etc calls will
+    //only find registered symbols.
     R_useDynamicSymbols(info, FALSE); 
   }
 }

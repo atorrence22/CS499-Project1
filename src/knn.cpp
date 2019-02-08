@@ -2,14 +2,27 @@
 #include <Eigen/Dense> //matrix library, does dynamic memory allocation 
 #include <iostream>
 
-int knn (
+/*
+ * I think this method is supposed to be called Predict1toMaxNeighbors????
+ * Need to do error checking in code too(check for: negative numbers, ...)
+ */
+int knn ( 
     const double *train_inputs_ptr, //n oservations x n_features
     const double *train_label_ptr, //n_observations 
+    int nrow, int ncol, int max_neighbors_ptr, 
     const double *test_input_ptr, //n_features
     const int n_observations, const int n_features, const int max_neighbors, 
     //inputs above, outputs below
     double *test_predictions_ptr //max_neighbors
 ){
+  int index; 
+  
+  if(nrow < 1) {
+    return ERROR_NO_TRAIN_DATA; 
+  }
+  
+  //////COMPUTE VECTOR OF DISTANCES: 
+  
   Eigen::Map< Eigen::MatrixXd > train_inputs_mat(
       (double*)train_inputs_ptr, n_observations, n_features);
   
@@ -20,26 +33,32 @@ int knn (
   
   Eigen::VectorXi sorted_index_vec(n_observations); 
   
-  for(int i=0; i<n_observations; i++){
-    dist_vec(i) = (
-      train_inputs_mat.row(i).transpose() - test_input_vec
+  //loop of data points to compute distance
+  for(index = 0; index < n_observations; index++){
+    dist_vec(index) = (
+      train_inputs_mat.row(index).transpose() - test_input_vec
     ).norm(); 
-    sorted_index_vec(i) = i; 
+    sorted_index_vec(index) = index; 
   }
-  std::sort(
-    sorted_index_vec.data(), 
-    sorted_index_vec.data()+sorted_index_vec.size(), 
-    [& dist_vec](int left, int right){
+  std::sort
+    (sorted_index_vec.data(), //get vector of indices back 
+    sorted_index_vec.data() + sorted_index_vec.size(), 
+    [&dist_vec](int left, int right) { 
       return dist_vec(left) < dist_vec(right); 
     }
   ); 
+  
   double total = 0.0;
-  int model_i, neighbors, row_i; 
-  for(model_i = 0; model_i< max_neighbors; model_i++){
-    neighbors = model_i + 1; 
-    row_i = sorted_index_vec(model_i);
+  int k, neighbors, row_i; 
+  for(k = 0; k < max_neighbors; k++){
+    neighbors = k + 1; 
+    //i <- t_k
+    row_i = sorted_index_vec(k);
+    //totalY += y_i
     total += train_label_ptr[row_i]; 
-    test_predictions_ptr[model_i] = total / neighbors; 
+    //totalY / kmax
+    test_predictions_ptr[k] = total / neighbors; 
   }
+  
   return 0;
 }
