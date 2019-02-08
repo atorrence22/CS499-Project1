@@ -1,0 +1,2 @@
+useDynLib(NearestNeighbors)
+exportPattern("^[[:alpha:]]+")

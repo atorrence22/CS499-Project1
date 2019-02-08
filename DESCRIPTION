@@ -1,0 +1,11 @@
+Package: RstuffDelete
+Type: Package
+Title: R stuff delete
+Version: 2019.02.04
+Author: Chloe Bates
+Maintainer: Chloe Bates <ccb323@nau.edu>
+Description: Demo code to show C++ code in an R package.
+License: GPL-3
+RoxygenNote: 6.1.1
+LinkingTo: RcppEigen
+Suggests: ElemStatLearn
