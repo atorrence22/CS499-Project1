@@ -18,6 +18,8 @@ int knn (
   
   //////COMPUTE VECTOR OF DISTANCES: 
   
+  int index;
+  
   Eigen::Map< Eigen::MatrixXd > train_inputs_mat(
       (double*)train_inputs_ptr, n_observations, n_features);
   
@@ -35,13 +37,13 @@ int knn (
     ).norm(); 
     sorted_index_vec(index) = index; 
   }
-  std::sort
-    (sorted_index_vec.data(), //get vector of indices back 
+  std::sort(
+    sorted_index_vec.data(), //get vector of indices back 
     sorted_index_vec.data() + sorted_index_vec.size(), 
-    [&dist_vec](int left, int right) { 
+    [&dist_vec](int left, int right) {
       return dist_vec(left) < dist_vec(right); 
-    }
-  ); 
+      }
+  );
   
   double total = 0.0;
   int k, neighbors, row_i; 

@@ -23,10 +23,11 @@ void knn_interface(
 }
 
 R_CMethodDef CMethods[] = {
-  {"knn_interface", (DL_FUNC) &knn_interface, 7}, 
+  {"knn_interface", (DL_FUNC) &knn_interface, 7}, //7 arguments in knn_interface
   {NULL, NULL, 0}
 };
 
+//tells us this block is feulable by C. 
 extern "C" {
   void R_init_NearestNeighbors(DllInfo *info){
     R_registerRoutines(info, CMethods, NULL, NULL, NULL);
