@@ -1,3 +1,4 @@
+/*
 #ifndef MY_MEAN_H
 #define MY_MEAN_H
 
@@ -5,7 +6,7 @@
 #include <stdio.h>
 
 //global constants
-extern const int MY_MEAN_ERROR_NO_DATA; 
+//extern const int MY_MEAN_ERROR_NO_DATA = 0; 
 
 
 int my_mean_C(int *data_ptr, int data_count, double *output_ptr); 
@@ -13,3 +14,4 @@ int my_mean_C(int *data_ptr, int data_count, double *output_ptr);
 
 
 #endif //MY_MEAN_H
+ */
