@@ -9,17 +9,12 @@
 int knn ( 
     const double *train_inputs_ptr, //n oservations x n_features
     const double *train_label_ptr, //n_observations 
-    int nrow, int ncol, int max_neighbors_ptr, 
     const double *test_input_ptr, //n_features
     const int n_observations, const int n_features, const int max_neighbors, 
     //inputs above, outputs below
     double *test_predictions_ptr //max_neighbors
 ){
-  int index; 
-  
-  if(nrow < 1) {
-    return ERROR_NO_TRAIN_DATA; 
-  }
+  //ERROR STUFF HERE? 
   
   //////COMPUTE VECTOR OF DISTANCES: 
   
