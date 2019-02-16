@@ -31,6 +31,6 @@ test.i <- i01[6]
 X <- zip.train[train.i, -1]
 y <- zip.train[train.i, 1]
 testX <- zip.train[test.i, -1]
-knn(X, y, testX, 3)
+knn(X, y, testX, -3)
 zip.train[test.i, 1]
 }
