@@ -2,7 +2,7 @@
 % Please edit documentation in R/knn.R
 \name{knn}
 \alias{knn}
-\title{K nearest neighbors algorithm}
+\title{K Nearest Neighbors Algorithm}
 \usage{
 knn(X.mat, y.vec, testX.vec, max.neighbors)
 }

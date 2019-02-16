@@ -1,4 +1,4 @@
-#include "knn.h"
+#include "NN1toKmaxPredict.h"
 #include <R.h>
 #include <R_ext/Rdynload.h>
 #include "myMean.h"
@@ -12,7 +12,7 @@ void knn_interface(
     const int *max_neighbors_ptr, 
     double *test_predictions_ptr //max_neighbors
 ){
-  int status = knn(train_inputs_ptr, train_label_ptr,
+  int status = NN1toKmaxPredict(train_inputs_ptr, train_label_ptr,
                    test_input_ptr, *n_observations_ptr,
                    *n_features_ptr, *max_neighbors_ptr, 
                    test_predictions_ptr); 

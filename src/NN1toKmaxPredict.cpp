@@ -1,12 +1,8 @@
-#include "knn.h"
+#include "NN1toKmaxPredict.h"
 #include <Eigen/Dense> //matrix library, does dynamic memory allocation 
 #include <iostream>
 
-/*
- * I think this method is supposed to be called Predict1toMaxNeighbors????
- * Need to do error checking in code too(check for: negative numbers, ...)
- */
-int knn ( 
+int NN1toKmaxPredict ( 
     const double *train_inputs_ptr, //n oservations x n_features
     const double *train_label_ptr, //n_observations 
     const double *test_input_ptr, //n_features
@@ -31,6 +27,7 @@ int knn (
   Eigen::VectorXi sorted_index_vec(n_observations); 
   
   //loop of data points to compute distance
+    //l1 manhattan distance
   for(index = 0; index < n_observations; index++){
     dist_vec(index) = (
       train_inputs_mat.row(index).transpose() - test_input_vec

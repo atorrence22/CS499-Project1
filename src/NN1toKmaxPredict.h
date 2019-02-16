@@ -6,7 +6,7 @@
 extern const int ERROR_NO_TRAIN_DATA; 
 
 
-int knn (
+int NN1toKmaxPredict (
     const double *train_inputs_ptr, //n oservations x n_features
     const double *train_label_ptr, //n_observations 
     const double *test_input_ptr, //n_features
