@@ -21,9 +21,6 @@ for regression (multi-class classification not supposrted).}
 numeric vector of size max neighbors, predictions from 1 to max.neighbors
 }
 \description{
-NEED TO WRITE OUR OWN EXAMPLES!!! CHANGE!
-}
-\details{
 A demo R function that wraps our C++ code.
 }
 \examples{
@@ -34,6 +31,6 @@ test.i <- i01[6]
 X <- zip.train[train.i, -1]
 y <- zip.train[train.i, 1]
 testX <- zip.train[test.i, -1]
-knn(X, y, testX, 3)
+knn(X, y, testX, -3)
 zip.train[test.i, 1]
 }
