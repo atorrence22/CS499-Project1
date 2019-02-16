@@ -1,0 +1,15 @@
+Dear package maintainer,
+
+this notification has been generated automatically.
+Your package NearestNeighbors_2019.02.04.tar.gz has been built (if working) and checked for Windows.
+Please check the log files and (if working) the binary package at:
+https://win-builder.r-project.org/gBW6R4eQOzr6
+The files will be removed after roughly 72 hours.
+Installation time in seconds: 19
+Check time in seconds: 67
+Status: 1 WARNING
+R version 3.5.2 (2018-12-20)
+
+All the best,
+Uwe Ligges
+(CRAN maintainer of binary packages for Windows)
