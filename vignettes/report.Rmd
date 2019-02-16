@@ -1,0 +1,103 @@
+---
+title: "Report for Project 1 on Nearest Neighbors"
+author: "Chloe Bates, Austin Torrence, Luis Yang, Huayu Li"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Report for Project 1 on Nearest Neighbors}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+``` {r data}
+data.name.vec <- c(
+  "spam", 
+  "SAheart", 
+  "zip.train", 
+  "prostate", 
+  "ozone")
+data.list <- list()
+library(ElemStatLearn)
+for(data.name in data.name.vec)
+{
+  data(list=data.name, package = "ElemStatLearn")
+  data.list[[data.name]] <- get(data.name)
+}
+str(data.list)
+
+is.binary <- ElemStatLearn::zip.train[,1]%in% c(0,1)
+data.list <- list(
+  spam=list(
+    label.vec=ifelse(ElemStatLearn::spam$spam=="spam", 1, 0),
+    feature.mat=as.matrix(ElemStatLearn::spam[,-ncol(ElemStatLearn::spam)])),
+  zip.train=list(
+    label.vec=ElemStatLearn::zip.train[is.binary,1],
+    feature.mat=ElemStatLearn::zip.train[is.binary,-1]
+  ))
+n.folds<-5
+for(data.name in names(data.list))
+{
+  one.data.set <- data.list[[data.name]]
+  set.seed(1)
+  fold.vec <- sample(rep(1:n.folds, 1:nrow(one.data.set$feature.mat)))
+  
+  nearestNeighbors(one.data.set$feature.mat, one.data.set$label.vec)
+  
+  for(test.fold in 1:n.folds){
+    is.train <- fold.vec != test.fold
+    fit <- nearestNeighbors(one.data.set$feature.mat[is.train,], one.data.set$label.vec[is.train])
+    pred.vec <- fit$predict(one.data.set$feature.mat[!istrain,])
+    results.list[[paste(data.name,test.fold)]]
+  }
+}
+  
+```
+
+## spam
+```{r}
+results.list[["spam"]]
+plot
+show 
+```
+
+## SAheart
+```{r}
+results.list[["SAheart"]]
+plot
+show 
+```
+
+
+## zip.train
+```{r}
+results.list[["zip.train"]]
+plot
+show 
+```
+## prostate
+```{r}
+results.list[["prostate"]]
+plot
+show 
+```
+
+
+## ozone
+```{r}
+results.list[["ozone"]]
+plot
+show 
+```
+
+
+
+
+
+

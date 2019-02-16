@@ -10,7 +10,16 @@ int NN1toKmaxPredict (
     //inputs above, outputs below
     double *test_predictions_ptr //max_neighbors
 ){
-  //ERROR STUFF HERE? 
+  //ERROR STUFF HERE
+  if( n_observations <= 0) {
+    throw "Number of training observations must me more than 0";
+  } 
+  if (n_features <= 0) {
+    throw "Number of features must be more than 0";
+  }
+  if (max_neighbors <= 0) {
+    throw "Max neighbors must be more than 0";
+  }
   
   //////COMPUTE VECTOR OF DISTANCES: 
   
@@ -27,7 +36,6 @@ int NN1toKmaxPredict (
   Eigen::VectorXi sorted_index_vec(n_observations); 
   
   //loop of data points to compute distance
-    //l1 manhattan distance
   for(index = 0; index < n_observations; index++){
     dist_vec(index) = (
       train_inputs_mat.row(index).transpose() - test_input_vec
@@ -41,7 +49,7 @@ int NN1toKmaxPredict (
       return dist_vec(left) < dist_vec(right); 
       }
   );
-  
+  //l1 manhattan distance
   double total = 0.0;
   int k, neighbors, row_i; 
   for(k = 0; k < max_neighbors; k++){

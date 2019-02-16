@@ -1,6 +1,4 @@
 #' K Nearest Neighbors Algorithm
-#'
-#' NEED TO WRITE OUR OWN EXAMPLES!!! CHANGE!
 #' 
 #' A demo R function that wraps our C++ code. 
 #'
@@ -32,3 +30,4 @@ knn <- function(X.mat, y.vec, testX.vec, max.neighbors){
     predictions=double(max.neighbors), PACKAGE="NearestNeighbors")
   result.list$predictions
 }
+

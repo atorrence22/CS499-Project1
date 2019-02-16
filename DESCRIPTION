@@ -8,4 +8,8 @@ Description: R/C++ code to execute KNN algorithm.
 License: GPL-3
 RoxygenNote: 6.1.1
 LinkingTo: RcppEigen
-Suggests: ElemStatLearn
+Suggests: 
+    ElemStatLearn,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

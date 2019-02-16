@@ -21,9 +21,6 @@ for regression (multi-class classification not supposrted).}
 numeric vector of size max neighbors, predictions from 1 to max.neighbors
 }
 \description{
-NEED TO WRITE OUR OWN EXAMPLES!!! CHANGE!
-}
-\details{
 A demo R function that wraps our C++ code.
 }
 \examples{
