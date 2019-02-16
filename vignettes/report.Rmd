@@ -48,11 +48,11 @@ for(data.name in names(data.list))
   set.seed(1)
   fold.vec <- sample(rep(1:n.folds, 1:nrow(one.data.set$feature.mat)))
   
-  nearestNeighbors(one.data.set$feature.mat, one.data.set$label.vec)
+  knn(one.data.set$feature.mat, one.data.set$label.vec)
   
   for(test.fold in 1:n.folds){
     is.train <- fold.vec != test.fold
-    fit <- nearestNeighbors(one.data.set$feature.mat[is.train,], one.data.set$label.vec[is.train])
+    fit <- knn(one.data.set$feature.mat[is.train,], one.data.set$label.vec[is.train])
     pred.vec <- fit$predict(one.data.set$feature.mat[!istrain,])
     results.list[[paste(data.name,test.fold)]]
   }
