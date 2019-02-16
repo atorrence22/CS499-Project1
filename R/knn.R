@@ -1,8 +1,8 @@
-#' K nearest neighbors algorithm
+#' K Nearest Neighbors Algorithm
 #'
-#' A demo R function that wraps our C++ code. 
+#' NEED TO WRITE OUR OWN EXAMPLES!!! CHANGE!
 #' 
-#' NEED TO WRITE OUR OWN EXAMPLES!!! CHANGE! 
+#' A demo R function that wraps our C++ code. 
 #'
 #' @param X.mat numeric train feature matrix [n x p]
 #' @param y.vec numeric train label vector [n], either 
@@ -25,10 +25,10 @@
 #' knn(X, y, testX, 3)
 #' zip.train[test.i, 1]
 knn <- function(X.mat, y.vec, testX.vec, max.neighbors){
-  result.list <- .c(
-    "knn_interface", as.double(x.mat), as.double(y.vec), 
+  result.list <- .C(
+    "knn_interface", as.double(X.mat), as.double(y.vec), 
     as.double(testX.vec), as.integer(nrow(X.mat)), 
     as.integer(ncol(X.mat)), as.integer(max.neighbors), 
-    predictions-double(max.neighbors), PACKAGE="RstuffDelete")
+    predictions=double(max.neighbors), PACKAGE="NearestNeighbors")
   result.list$predictions
 }

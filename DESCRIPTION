@@ -2,7 +2,7 @@ Package: NearestNeighbors
 Type: Package
 Title: Nearest Neightbors Algorithm
 Version: 2019.02.04
-Author: Chloe Bates, Luis, Huayu Li, Austin Torrence
+Author: Chloe Bates, Zhaolu Yang, Huayu Li, Austin Torrence
 Maintainer: Chloe Bates <ccb323@nau.edu>, Luis <zy52@nau.edu>, Huayu Li <hl454@nau.edu>, Austin Torrence <art296@nau.edu>
 Description: R/C++ code to execute KNN algorithm. 
 License: GPL-3

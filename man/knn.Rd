@@ -2,14 +2,16 @@
 % Please edit documentation in R/knn.R
 \name{knn}
 \alias{knn}
-\title{K nearest neighbors algo}
+\title{K nearest neighbors algorithm}
 \usage{
 knn(X.mat, y.vec, testX.vec, max.neighbors)
 }
 \arguments{
 \item{X.mat}{numeric train feature matrix [n x p]}
 
-\item{y.vec}{numeric train label vector [n], either all 0/1 for binary classification, or other real numbers for regression (multi-class classification not supposrted).}
+\item{y.vec}{numeric train label vector [n], either 
+all 0/1 for binary classification, or other real numbers
+for regression (multi-class classification not supposrted).}
 
 \item{testX.vec}{numeric test feature vector [p]}
 
@@ -19,14 +21,17 @@ knn(X.mat, y.vec, testX.vec, max.neighbors)
 numeric vector of size max neighbors, predictions from 1 to max.neighbors
 }
 \description{
-R function that wraps our C++ code.
+NEED TO WRITE OUR OWN EXAMPLES!!! CHANGE!
+}
+\details{
+A demo R function that wraps our C++ code.
 }
 \examples{
 data(zip.train, package="ElemStatLearn")
-i01 <- chich(zip.train[,1] \%in\% c(0,1))
+i01 <- which(zip.train[,1] \%in\% c(0,1))
 train.i <- i01[1:5]
 test.i <- i01[6]
-x <- zip.train[train.i, -1]
+X <- zip.train[train.i, -1]
 y <- zip.train[train.i, 1]
 testX <- zip.train[test.i, -1]
 knn(X, y, testX, 3)
